@@ -9,7 +9,7 @@ class BookmarksController < ApplicationController
     @bookmark.list = @list
 
     if @bookmark.save
-      redirect_to list_path(@list), notice: "Movie added to the list!"
+      redirect_to list_path(@list)
     else
       # on réaffiche la show avec les erreurs de Simple Form
       render :new, status: :unprocessable_entity

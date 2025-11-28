@@ -19,21 +19,33 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-light bg-light px-3">
-      <%= link_to lists_path, class: "navbar-brand" do %>
-        <i class="fa-solid fa-film fa-xl"></i>
-      <% end %>
+          <nav class="navbar-custom">
+            <%= link_to lists_path, class: "navbar-logo" do %>
+              <i class="fa-solid fa-film"></i>
+            <% end %>
 
-      <div>
-        <%= link_to "Add list", new_list_path, class: "btn btn-primary me-2" %>
-        <%= link_to "My lists", lists_path, class: "btn btn-outline-primary" %>
-      </div>
-    </nav>
+            <div class="navbar-links">
+              <%= link_to "Add list", new_list_path, class: "btn-navbar" %>
+              <%= link_to "My lists", lists_path, class: "btn-navbar-outline" %>
+            </div>
+        </nav>
        <%= yield :banner %>
     <div class="container">
         <%= yield %>
     </div>
 
+  <div class="footer">
+    <div class="footer-links">
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <div class="footer-copyright">
+      This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+    </div>
+  </div>
 
   </body>
 </html>

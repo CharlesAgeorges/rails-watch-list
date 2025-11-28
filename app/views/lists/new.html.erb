@@ -1,18 +1,18 @@
 <% content_for :banner do %>
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url('<%= asset_path "banner_new.jpg" %>');">
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= cl_image_path("banner_new_yjvv9s") %>');">
     <div class="container banner-content">
-      <h1>Make a list</h1>
+      <h1>Make a list </h1>
     </div>
   </div>
 <% end %>
+
 
 <div class="form-card">
   <h2>Create a movie list</h2>
 
   <%= simple_form_for @list do |f| %>
     <%= f.input :name, label: "List name" %>
-    <%= f.input :photo_url, label: "Image URL (optional)" %>
-
+    <%= f.input :photo, as: :file %>
     <%= f.submit "Create list", class: "btn-green" %>
   <% end %>
 </div>

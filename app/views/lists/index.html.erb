@@ -1,5 +1,5 @@
 <% content_for :banner do %>
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url('<%= asset_path "banner_home.jpg" %>');">
+  <div class="banner" style="background-image:linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url('<%= cl_image_path("banner_home_cfggtu") %>');">
     <div class="container banner-content">
       <h1>Save any kind of movies</h1>
     </div>
@@ -13,7 +13,16 @@
 
 <div class="lists-grid">
   <% @lists.each do |list| %>
-      <h2><%= link_to list.name, list_path(list) %></h2>
+    <div class="list-item">
+      <%= link_to list_path(list), class: "list-card" do %>
+        <div class="list-card-image"style="background-image: url('<%=list.photo.attached? ? cl_image_path(list.photo.key, crop: :fill) :cl_image_path("petit_test_d6maki")%>');">
+          <div class="list-card-overlay">
+            <h2><%= list.name %></h2>
+          </div>
+        </div>
+      <% end %>
 
+      <%= link_to "Delete",list_path(list),data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: "list-delete" %>
+    </div>
   <% end %>
 </div>
