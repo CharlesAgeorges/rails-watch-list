@@ -15,9 +15,25 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4RhisdP4VbQv1aQITN76nKD1Zq9E+V40YQUh+V4Z8r4nV9VqVdqZ3Tjx3C2QXT6KGrw=="crossorigin="anonymous"referrerpolicy="no-referrer" />
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-light bg-light px-3">
+      <%= link_to lists_path, class: "navbar-brand" do %>
+        <i class="fa-solid fa-film fa-xl"></i>
+      <% end %>
+
+      <div>
+        <%= link_to "Add list", new_list_path, class: "btn btn-primary me-2" %>
+        <%= link_to "My lists", lists_path, class: "btn btn-outline-primary" %>
+      </div>
+    </nav>
+       <%= yield :banner %>
+    <div class="container">
+        <%= yield %>
+    </div>
+
+
   </body>
 </html>

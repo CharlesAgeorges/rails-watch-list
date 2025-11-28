@@ -1,0 +1,29 @@
+<% content_for :banner do %>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url('<%= asset_path "banner_bookmark_new.jpg" %>');">
+    <div class="container banner-content">
+      <h1>Add movies</h1>
+    </div>
+  </div>
+<% end %>
+
+
+<div class="form-card">
+  <h2>Add a movie to <%= @list.name %></h2>
+
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+
+    <%= f.input :movie_id,
+        collection: Movie.all,
+        label_method: :title,
+        value_method: :id,
+        prompt: "Choose a movie",
+        label: "Movie" %>
+
+    <%= f.input :comment,
+        as: :text,
+        label: "Comment",
+        input_html: { rows: 3 } %>
+
+    <%= f.submit "Add movie", class: "btn-green" %>
+  <% end %>
+</div>

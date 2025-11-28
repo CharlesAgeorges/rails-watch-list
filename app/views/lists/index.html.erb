@@ -1,0 +1,19 @@
+<% content_for :banner do %>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url('<%= asset_path "banner_home.jpg" %>');">
+    <div class="container banner-content">
+      <h1>Save any kind of movies</h1>
+    </div>
+  </div>
+<% end %>
+
+<div class="lists-header">
+  <h1>My Lists</h1>
+  <%= link_to "Create a movie list", new_list_path, class: "btn-green" %>
+</div>
+
+<div class="lists-grid">
+  <% @lists.each do |list| %>
+      <h2><%= link_to list.name, list_path(list) %></h2>
+
+  <% end %>
+</div>
