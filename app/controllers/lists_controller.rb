@@ -5,7 +5,6 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-    @bookmark = Bookmark.new
   end
 
   def new
@@ -14,8 +13,9 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
+
     if @list.save
-      redirect_to list_path(@list), notice: "List created!"
+      redirect_to list_path(@list), notice: "List was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -24,7 +24,7 @@ class ListsController < ApplicationController
   def destroy
     @list = List.find(params[:id])
     @list.destroy!
-    redirect_to lists_path, notice: "List was successfully destroyed.", status: :see_other
+    redirect_to lists_path, status: :see_other, notice: "List was successfully destroyed."
   end
 
   private
